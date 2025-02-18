@@ -1,0 +1,28 @@
+{
+  "session": "2938298429",
+  "serialized": "2938298429303@c.us",
+  "name": "group name",
+  "participants": [
+    {
+      "serialized": "929393992@c.us",
+      "name": "User01",
+      "isAdmin": true,
+      "isSuperAdmin": false
+    },
+    {
+      "serialized": "928392030@c.us",
+      "name": "User02",
+      "isAdmin": true,
+      "isSuperAdmin": false
+    }
+  ],
+  "activities": [
+    {
+      "serialized": "929393992@c.us",
+      "name": "User01",
+      "amountMessage": 2,
+      "lastMessage": 1739908441387
+    }
+  ],
+  "amountParticipants": 2
+}
