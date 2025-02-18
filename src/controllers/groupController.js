@@ -4,6 +4,7 @@ const { GroupSaveChanges } = require("../services/group/saveChanges")
 const { existsSync, mkdirSync } = require("node:fs")
 const { GroupRemoveParticipants } = require("../services/group/removeParticipants")
 const path = require("node:path")
+const { GroupGetAll } = require("../services/group/getAll")
 
 class GroupController {
     constructor(storagePath) {
@@ -18,6 +19,11 @@ class GroupController {
     async getBySession(session) {
         const service = new GroupGetBySession(this.storage)
         return await service.execute(session)
+    }
+
+    async getAll() {
+        const service = new GroupGetAll(this.storage)
+        return await service.execute()
     }
 
     async saveChanages(session, data) {
