@@ -1,6 +1,5 @@
 const { GroupController } = require("./src/controllers/groupController")
 const { MemberController } = require("./src/controllers/memberController")
-const Group = require("./src/models/Group")
 
 class GroupActivity {
     constructor(storagePath) {
@@ -33,8 +32,7 @@ class GroupActivity {
                 session,
                 serialized: chat.id._serialized,
                 name: chat.name,
-                participants,
-                createdAt: chat.creation
+                amountParticipants: chat.participants.length
             }
 
             group = this.group.create(groupProps)
@@ -43,31 +41,21 @@ class GroupActivity {
         const { data } = group
 
         if (chat.participants.length != data.amountParticipants && chat.participants.length < data.amountParticipants) {
-            for (var participant of data.participants) {
+            for (var participant of data.activities) {
                 const participantExist = chat.participants.find(x => x.id._serialized === participant.serialized)
                 if (!participantExist) {
-                    data.participants = this.group.removeParticipants(data.participants, "serialized", participant.serialized)
                     data.activities = this.group.removeParticipants(data.activities, "serialized", participant.serialized)
                 }
             }
 
-            data.amountParticipants = new Group().getNumberOfParticipants(data.participants)
-        } else {
-            for (let participant of chat.participants) {
-                const participantExist = data.participants.find(x => x.serialized == participant.id._serialized)
-                if (!participantExist) {
-                    const contact = await client.getContactById(participant.id._serialized)
+            data.amountParticipants = chat.participants.length
+        } else { data.amountParticipants = chat.participants.length }
 
-                    data.participants.push({
-                        serialized: contact.id._serialized,
-                        name: (contact.pushname) ? contact.pushname : "sem nome",
-                        isAdmin: participant.isAdmin,
-                        isSuperAdmin: participant.isSuperAdmin
-                    })
-                }
+        for (let memberActivity of data.activities) {
+            const nickChanged = chat.participants.find(x => x.id._serialized === memberActivity.serialized)
+            if (nickChanged) {
+                if (memberActivity.name !== nickChanged.name) { memberActivity.name = nickChanged.name }
             }
-
-            data.amountParticipants = new Group().getNumberOfParticipants(data.participants)
         }
 
         if (chat.lastMessage) {
