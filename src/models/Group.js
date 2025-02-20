@@ -1,16 +1,11 @@
 class Group {
-    constructor(session, serialized, name, participants) {
+    constructor(session, serialized, name, amountParticipants) {
         this.session = session
         this.serialized = serialized
         this.name = name 
-        this.participants = participants
         this.activities = [] 
-        this.amountParticipants = 0
+        this.amountParticipants = amountParticipants
         this.createdAt = new Date().getTime()
-    }
-
-    getNumberOfParticipants(participants) {
-        return participants.length
     }
 }
 
