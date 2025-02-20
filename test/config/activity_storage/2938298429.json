@@ -2,27 +2,20 @@
   "session": "2938298429",
   "serialized": "2938298429303@c.us",
   "name": "group name",
-  "participants": [
-    {
-      "serialized": "929393992@c.us",
-      "name": "User01",
-      "isAdmin": true,
-      "isSuperAdmin": false
-    },
-    {
-      "serialized": "928392030@c.us",
-      "name": "User02",
-      "isAdmin": true,
-      "isSuperAdmin": false
-    }
-  ],
   "activities": [
     {
-      "serialized": "929393992@c.us",
-      "name": "User01",
-      "amountMessage": 2,
-      "lastMessage": 1739908441387
+      "serialized": "928392030@c.us",
+      "name": "Mario",
+      "amountMessage": 4,
+      "lastMessage": 1740072996971
+    },
+    {
+      "serialized": "2038203002@c.us",
+      "name": "Milene",
+      "amountMessage": 1,
+      "lastMessage": 1740073513561
     }
   ],
-  "amountParticipants": 2
+  "amountParticipants": 4,
+  "createdAt": 1740072741417
 }

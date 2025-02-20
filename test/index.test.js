@@ -17,7 +17,7 @@ test("should create a group", async () => {
                     user: '929393992',
                     _serialized: '929393992@c.us'
                 },
-                name: "User01",
+                name: "Ana laura",
                 isAdmin: true,
                 isSuperAdmin: false
             },
@@ -27,7 +27,27 @@ test("should create a group", async () => {
                     user: '928392030',
                     _serialized: '928392030@c.us'
                 },
-                name: "User02",
+                name: "Mario",
+                isAdmin: true,
+                isSuperAdmin: false
+            },
+            {
+                id: {
+                    server: 'c.us',
+                    user: '2938203920',
+                    _serialized: '2938203920@c.us'
+                },
+                name: "Laura",
+                isAdmin: true,
+                isSuperAdmin: false
+            },
+            {
+                id: {
+                    server: 'c.us',
+                    user: '2038203002',
+                    _serialized: '2038203002@c.us'
+                },
+                name: "Milene",
                 isAdmin: true,
                 isSuperAdmin: false
             }
@@ -35,11 +55,11 @@ test("should create a group", async () => {
         lastMessage: {
             _data: {
                 body: 'message body',
-                notifyName: 'User01',
+                notifyName: 'Milene',
             },
             hasMedia: false,
             body: 'message body',
-            author: '929393992@c.us',
+            author: '2038203002@c.us',
         }
     }
 
