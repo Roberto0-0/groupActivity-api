@@ -6,8 +6,8 @@ const storage = [
             _serialized: '929393992@c.us'
         },
         number: '929393992',
-        name: 'User01',
-        pushname: 'User01',
+        name: 'Gustavo da silva',
+        pushname: 'Gustavo da silva',
     },
     {
         id: {
@@ -16,9 +16,27 @@ const storage = [
             _serialized: '928392030@c.us'
         },
         number: '928392030',
-        name: 'User02',
-        pushname: 'User02',
-    }
+        name: 'Mario',
+        pushname: 'Mario',
+    },
+    {
+        id: {
+            server: 'c.us',
+            user: '2938203920',
+            _serialized: '2938203920@c.us'
+        },
+        name: "Laura",
+        pushname: 'Laura',
+    },
+    {
+        id: {
+            server: 'c.us',
+            user: '2038203002',
+            _serialized: '2038203002@c.us'
+        },
+        name: "Milene",
+        pushname: 'Milene',
+    } 
 ]
 
 class Client {
