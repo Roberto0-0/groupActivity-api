@@ -15,19 +15,6 @@ class GroupActivity {
         group = await this.group.getBySession(session)
 
         if (!group.success) {
-            var participants = []
-
-            for (let participant of chat.participants) {
-                const contact = await client.getContactById(participant.id._serialized)
-
-                participants.push({
-                    serialized: contact.id._serialized,
-                    name: (contact.pushname) ? contact.pushname : "sem nome",
-                    isAdmin: participant.isAdmin,
-                    isSuperAdmin: participant.isSuperAdmin
-                })
-            }
-
             const groupProps = {
                 session,
                 serialized: chat.id._serialized,
@@ -52,9 +39,9 @@ class GroupActivity {
         } else { data.amountParticipants = chat.participants.length }
 
         for (let memberActivity of data.activities) {
-            const nickChanged = chat.participants.find(x => x.id._serialized === memberActivity.serialized)
+            const nickChanged = await client.getContactById(memberActivity.serialized)
             if (nickChanged) {
-                if (memberActivity.name !== nickChanged.name) { memberActivity.name = nickChanged.name }
+                if (memberActivity.name !== nickChanged.pushname) { memberActivity.name = nickChanged.pushname }
             }
         }
 
