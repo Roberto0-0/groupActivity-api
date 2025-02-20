@@ -38,13 +38,6 @@ class GroupActivity {
             data.amountParticipants = chat.participants.length
         } else { data.amountParticipants = chat.participants.length }
 
-        for (let memberActivity of data.activities) {
-            const nickChanged = await client.getContactById(memberActivity.serialized)
-            if (nickChanged) {
-                if (memberActivity.name !== nickChanged.pushname) { memberActivity.name = nickChanged.pushname }
-            }
-        }
-
         if (chat.lastMessage) {
             const memberExist = data.activities.find(x => x.serialized == chat.lastMessage.author)
             if (!memberExist) {
@@ -58,6 +51,8 @@ class GroupActivity {
                 await this.group.saveChanages(session, data)
                 return
             }
+
+            if(memberExist.name !== chat.lastMessage._data.notifyName) memberExist.name = chat.lastMessage._data.notifyName  
 
             memberExist.amountMessage += 1
             memberExist.lastMessage = new Date().getTime()
