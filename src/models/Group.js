@@ -6,7 +6,7 @@ class Group {
         this.participants = participants
         this.activities = [] 
         this.amountParticipants = 0
-        this.createAt = new Date().getTime()
+        this.createdAt = new Date().getTime()
     }
 
     getNumberOfParticipants(participants) {
