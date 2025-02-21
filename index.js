@@ -8,7 +8,7 @@ class GroupActivity {
         this.member = new MemberController(this.storage)
     }
 
-    async on(client, chat) {
+    async on(chat) {
         const session = chat.id._serialized.substring(0, 10)
         var group
 
@@ -36,7 +36,8 @@ class GroupActivity {
                     }
                 }
                 data.amountParticipants = chat.participants.length
-            } else { data.amountParticipants = chat.participants.length }
+            }
+            data.amountParticipants = chat.participants.length
         }
 
         if (chat.lastMessage) {
