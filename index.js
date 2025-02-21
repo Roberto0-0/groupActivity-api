@@ -27,16 +27,17 @@ class GroupActivity {
 
         const { data } = group
 
-        if (chat.participants.length != data.amountParticipants && chat.participants.length < data.amountParticipants) {
-            for (var participant of data.activities) {
-                const participantExist = chat.participants.find(x => x.id._serialized === participant.serialized)
-                if (!participantExist) {
-                    data.activities = this.group.removeParticipants(data.activities, "serialized", participant.serialized)
+        if (chat.participants.length != data.amountParticipants) {
+            if (chat.participants.length < data.amountParticipants) {
+                for (var participant of data.activities) {
+                    const participantExist = chat.participants.find(x => x.id._serialized === participant.serialized)
+                    if (!participantExist) {
+                        data.activities = this.group.removeParticipants(data.activities, "serialized", participant.serialized)
+                    }
                 }
-            }
-
-            data.amountParticipants = chat.participants.length
-        } else { data.amountParticipants = chat.participants.length }
+                data.amountParticipants = chat.participants.length
+            } else { data.amountParticipants = chat.participants.length }
+        }
 
         if (chat.lastMessage) {
             const memberExist = data.activities.find(x => x.serialized == chat.lastMessage.author)
@@ -52,7 +53,7 @@ class GroupActivity {
                 return
             }
 
-            if(memberExist.name !== chat.lastMessage._data.notifyName) memberExist.name = chat.lastMessage._data.notifyName  
+            if (memberExist.name !== chat.lastMessage._data.notifyName) memberExist.name = chat.lastMessage._data.notifyName
 
             memberExist.amountMessage += 1
             memberExist.lastMessage = new Date().getTime()
