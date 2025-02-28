@@ -32,6 +32,7 @@ class GroupActivity {
                 for (var participant of data.activities) {
                     const participantExist = chat.participants.find(x => x.id._serialized === participant.serialized)
                     if (!participantExist) {
+                        data.messageAmount -= participant.amountMessage
                         data.activities = this.group.removeParticipants(data.activities, "serialized", participant.serialized)
                     }
                 }
@@ -47,9 +48,10 @@ class GroupActivity {
                     serialized: chat.lastMessage.author,
                     name: chat.lastMessage._data.notifyName,
                     amountMessage: 1,
-                    lastMessage: new Date().getTime()
+                    lastMessage: Date.now()
                 })
 
+                data.messageAmount += 1
                 await this.group.saveChanages(session, data)
                 return
             }
@@ -57,7 +59,8 @@ class GroupActivity {
             if (memberExist.name !== chat.lastMessage._data.notifyName) memberExist.name = chat.lastMessage._data.notifyName
 
             memberExist.amountMessage += 1
-            memberExist.lastMessage = new Date().getTime()
+            memberExist.lastMessage = Date.now()
+            data.messageAmount += 1
 
             await this.group.saveChanages(session, data)
             return
