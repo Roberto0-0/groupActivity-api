@@ -1,11 +1,12 @@
 const { readdirSync, readFileSync } = require("node:fs")
+const { GroupGetAllDTO } = require("../../DTOS/GroupGetAllDTO")
 
 class GroupGetAll {
     constructor(storage) {
         this._storage = storage
     }
 
-   async execute() {
+    async execute() {
         const files = readdirSync(this._storage)
 
         function readfiles(files, _storage) {
@@ -19,13 +20,18 @@ class GroupGetAll {
         }
 
         const _storage = this._storage
-        const result = readfiles(files, _storage)
+        const groups = readfiles(files, _storage)
+        const data = []
+
+        for (let group of groups) {
+            data.push(new GroupGetAllDTO(group.session, group.serialized, group.name))
+        }
 
         return {
             success: true,
-            data: result
+            data
         }
-    } 
+    }
 }
 
 module.exports = { GroupGetAll }
