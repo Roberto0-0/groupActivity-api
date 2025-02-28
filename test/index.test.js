@@ -5,9 +5,9 @@ test("should create a group", async () => {
 
     const chat = {
         id: {
-            _serialized: "2938298429303@c.us",
+            _serialized: "392003030@c.us",
         },
-        serialized: "94933094394",
+        serialized: "2938298429303@c.us",
         name: "group name",
         participants: [
             {
@@ -37,6 +37,16 @@ test("should create a group", async () => {
                     _serialized: '2938203920@c.us'
                 },
                 name: "Laura",
+                isAdmin: true,
+                isSuperAdmin: false
+            },
+            {
+                id: {
+                    server: 'c.us',
+                    user: '2038203002',
+                    _serialized: '2038203002@c.us'
+                },
+                name: "Milene",
                 isAdmin: true,
                 isSuperAdmin: false
             }
