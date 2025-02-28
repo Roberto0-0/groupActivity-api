@@ -3,7 +3,7 @@ class Member {
         tihs.serialized = serialized
         this.name = name
         this.amountMessage = 1
-        this.lastMessage = new Date().getTime()
+        this.lastMessage = Date.now()
     }
 }
 
