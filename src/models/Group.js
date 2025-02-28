@@ -5,7 +5,8 @@ class Group {
         this.name = name 
         this.activities = [] 
         this.amountParticipants = amountParticipants
-        this.createdAt = new Date().getTime()
+        this.messageAmount = 0
+        this.createdAt = Date.now() 
     }
 }
 
