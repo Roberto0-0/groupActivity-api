@@ -1,8 +1,7 @@
 const GroupActivity = require("../index")
-const client = require("./config/client")
 
 test("should create a group", async () => {
-    const storagePath = ("test/config")
+    const storagePath = ("test/storage")
 
     const chat = {
         id: {
@@ -40,32 +39,20 @@ test("should create a group", async () => {
                 name: "Laura",
                 isAdmin: true,
                 isSuperAdmin: false
-            },
-            {
-                id: {
-                    server: 'c.us',
-                    user: '2038203002',
-                    _serialized: '2038203002@c.us'
-                },
-                name: "Milene",
-                isAdmin: true,
-                isSuperAdmin: false
             }
         ],
         lastMessage: {
             _data: {
                 body: 'message body',
-                notifyName: 'Milene',
+                notifyName: 'Mario',
             },
             hasMedia: false,
             body: 'message body',
-            author: '2038203002@c.us',
+            author: '928392030@c.us',
         }
     }
 
-    const _client = new client()
-
-    await (new GroupActivity(storagePath).on(_client, chat))
+    await (new GroupActivity(storagePath).on(chat))
 
     expect(true).toBe(true)
 })
