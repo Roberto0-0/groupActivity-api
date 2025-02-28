@@ -3,8 +3,8 @@ const { GroupGetBySession } = require("../services/group/getBySession")
 const { GroupSaveChanges } = require("../services/group/saveChanges")
 const { existsSync, mkdirSync } = require("node:fs")
 const { GroupRemoveParticipants } = require("../services/group/removeParticipants")
-const path = require("node:path")
 const { GroupGetAll } = require("../services/group/getAll")
+const path = require("node:path")
 
 class GroupController {
     constructor(storagePath) {
