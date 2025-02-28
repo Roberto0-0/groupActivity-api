@@ -1,5 +1,5 @@
 node_modules
 
-src/test/storage/**/*storage*/
+test/storage/**/*storage*/
 
 yarn.lock
